@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package app.cheddar.api.auth;
+
+message UserSession {
+    string ip = 1;
+    repeated string scopes = 10;
+}
+message UserSessions {
+    repeated UserSession sessions = 1;
+}

@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package app.cheddar.api.request.user;
+
+import "app/cheddar/api/user/user_payload.proto";
+
+
+message MeServerMessage {
+    optional app.cheddar.api.user.UserPayload user = 1;
+}

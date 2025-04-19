@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package app.cheddar.api.request.ws;
+
+message WsHeartbeatServer {
+    int64 nonce = 1;
+    optional int32 interval = 2;
+}
+
+message WsHeartbeatClient {
+    int64 nonce = 1;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package app.cheddar.api.request.ws;
+
+import "app/cheddar/api/request/ws/heartbeat.proto";
+
+
+message WsServerMessage {
+    int64 op = 1;
+    oneof data {
+        app.cheddar.api.request.ws.WsHeartbeatServer heartbeat = 104;
+    }
+}

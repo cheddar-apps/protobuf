@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package app.cheddar.api.auth;
+
+message UserMfa {
+    bool enabled = 1;
+    optional bytes b32 = 2;
+    optional string auth_url = 3;
+}

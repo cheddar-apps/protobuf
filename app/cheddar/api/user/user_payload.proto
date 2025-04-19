@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package app.cheddar.api.user;
+
+message UserPayload {
+    int64 id = 1;
+    string username = 2;
+
+    message UserCustomizationOptions {
+        string display_name = 1;
+        string avatar_hash = 2;
+    }
+    optional UserCustomizationOptions customization_options = 10;
+
+
+}

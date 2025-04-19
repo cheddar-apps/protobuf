@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package app.cheddar.api.auth;
+
+import "app/cheddar/api/auth/user_mfa.proto";
+import "app/cheddar/api/auth/user_session.proto";
+import "app/cheddar/api/common/phone_number.proto";
+// requesting this requires scope 'private.auth.read'
+message UserAuthPayload {
+    optional string email = 1;
+    optional app.cheddar.api.common.PhoneNumber phone = 2;
+
+    // unused for now
+    optional app.cheddar.api.auth.UserMfa mfa = 10;
+    optional app.cheddar.api.auth.UserSessions sessions = 11;
+
+}

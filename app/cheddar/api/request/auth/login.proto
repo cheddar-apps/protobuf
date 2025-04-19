@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package app.cheddar.api.request.auth;
+
+import "app/cheddar/api/common/phone_number.proto";
+import "app/cheddar/api/user/user_payload.proto";
+import "app/cheddar/api/auth/user_token.proto";
+
+message LoginClientMessage {
+    oneof identifier {
+        string email = 10;
+        app.cheddar.api.common.PhoneNumber phone_number = 11;
+    }
+    string hashed_password = 20;
+
+    // todo: add captcha here once bots become an issue
+}
+
+message LoginServerMessage {
+    message LoginUserSuccess {
+        app.cheddar.api.user.UserPayload user = 1;
+        app.cheddar.api.auth.UserToken token = 2;
+
+    }
+    message ServerErrorFail {
+        string text = 1;
+        optional int64 try_again_in = 2;
+    }
+    message NotExistFail {
+        enum Which {
+            EMAIL = 0;
+            PHONE = 1;
+        }
+
+        Which which = 1;
+    }
+
+    int64 status = 1;
+    oneof data {
+        LoginUserSuccess success = 10;
+        ServerErrorFail err_fail = 11;
+        NotExistFail notfound_fail = 12;
+    }
+}

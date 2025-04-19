@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package app.cheddar.api.request;
+
+message HealthyResponse {
+    int64 up_since = 1;
+}
